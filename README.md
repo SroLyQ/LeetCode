@@ -1,0 +1,2 @@
+# LeetCode
+Practicing my algorithm!!
