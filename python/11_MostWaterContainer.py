@@ -4,17 +4,16 @@ class Solution(object):
         :type height: List[int]
         :rtype: int
         """
-        lmax = height.copy()
-        rmax = height.copy()
-
-        for i in range(len(lmax)):
-            if i-1<0: continue
-            lmax[i]=max(lmax[i],lmax[i-1])
-        for i in range(len(rmax),0,-1):
-            if i+1>len(rmax)-1: continue
-            rmax[i]=max(rmax[i],rmax[i+1])
-        
-        print(lmax,rmax)
+        mx=0
+        l,r=0,len(height)-1
+        while (l<r):
+            mx = max(mx,(r-l)*min(height[l],height[r]))
+            if height[l]<height[r]:
+                l+=1
+            else:
+                r-=1
+        return mx
+            
 inp = [int(i) for i in input().split()]
 sol = Solution()
 print(sol.maxArea(inp))
